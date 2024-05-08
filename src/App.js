@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import reducer from "./redux/reducers";
+import FormComponent from "./pages/FormComponent";
+import ListComponent from "./pages/ListComponent";
 
-function App() {
+const store = createStore(reducer);
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <Routes>
+          <Route path="/form" element={<FormComponent />} />
+          <Route path="/list" element={<ListComponent />} />
+          <Route path="/" element={<FormComponent />} />
+        </Routes>
+      </Router>
+    </Provider>
   );
-}
+};
 
 export default App;
