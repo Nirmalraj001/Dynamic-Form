@@ -1,10 +1,10 @@
 import React from "react";
 
-const SelectBox = ({ label, options, name, value, onChange, error }) => {
+const SelectBox = ({ label, options, name, value, onChange, error ,className}) => {
   return (
     <div>
       <label>{label}</label>
-      <select value={value} name={name} onChange={onChange}>
+      <select value={value} name={name} onChange={onChange} className={className}>
         <option value="">Select an option</option>
         {options.map((option) => (
           <option key={option} value={option}>
@@ -12,7 +12,7 @@ const SelectBox = ({ label, options, name, value, onChange, error }) => {
           </option>
         ))}
       </select>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className='error'>{error}</p>}
     </div>
   );
 };

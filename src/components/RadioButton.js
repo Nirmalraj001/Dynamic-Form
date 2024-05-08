@@ -7,10 +7,12 @@ const RadioButton = ({
   selectedOption,
   error,
   onChange,
+  className
 }) => {
   return (
-    <div>
+    <>
       <label>{label}</label>
+      <div className="radio-group">
       {options.map((option) => (
         <label key={option}>
           <input
@@ -19,12 +21,15 @@ const RadioButton = ({
             value={option}
             checked={selectedOption === option}
             onChange={onChange}
+            className={className}
           />
           {option}
         </label>
       ))}
-      {error && <span style={{ color: "red" }}>{error}</span>}
-    </div>
+      <br/>
+      </div>
+      {error && <span className='error'>{error}</span>}
+    </>
   );
 };
 

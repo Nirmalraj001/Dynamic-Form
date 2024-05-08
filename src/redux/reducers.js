@@ -1,30 +1,30 @@
 const initialState = {
-  formData: JSON.parse(localStorage.getItem("formData")) || [],
+  userData: JSON.parse(localStorage.getItem("userData")) || [],
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_FORM_DATA":
-      const newFormData = [...state.formData, action.payload];
-      localStorage.setItem("formData", JSON.stringify(newFormData)); // Update localStorage
+      const newUserData = [...state.userData, action.payload];
+      localStorage.setItem("userData", JSON.stringify(newUserData)); // Update localStorage
       return {
         ...state,
-        formData: newFormData,
+        userData: newUserData,
       };
     case "DELETE_FORM_DATA":
-      const updateFormData = state.formData.filter(
+      const updateUserData = state.userData.filter(
         (data, index) => index !== action.payload
       );
-      localStorage.setItem("formData", JSON.stringify(updateFormData)); // Delete localStorage
+      localStorage.setItem("userData", JSON.stringify(updateUserData)); // Delete localStorage
       return {
         ...state,
-        formData: updateFormData
+        userData: updateUserData
       };
     case "CLEAR_FORM_DATA":
-      localStorage.removeItem("formData"); // Remove from localStorage
+      localStorage.removeItem("userData"); // Remove from localStorage
       return {
         ...state,
-        formData: [],
+        userData: [],
       };
     default:
       return state;
