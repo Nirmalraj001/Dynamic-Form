@@ -12,7 +12,6 @@ const RadioButton = ({
   return (
     <>
       <label>{label}</label>
-      <div className="radio-group">
       {options.map((option) => (
         <label key={option}>
           <input
@@ -27,8 +26,7 @@ const RadioButton = ({
         </label>
       ))}
       <br/>
-      </div>
-      {error && <span className='error'>{error}</span>}
+      {error && <span className='error-message'>{error}</span>}
     </>
   );
 };

@@ -1,13 +1,12 @@
-export const addUserData = (userData) => ({
-  type: "ADD_FORM_DATA",
-  payload: userData,
+export const ADD_USER_DATA = 'ADD_USER_DATA';
+export const DELETE_USER_DATA = 'DELETE_USER_DATA';
+
+export const addUserData = (data) => ({
+  type: ADD_USER_DATA,
+  payload: data,
 });
 
-export const deleteUserData = id => ({
-  type: 'DELETE_FORM_DATA',
-  payload: id
-});
-
-export const clearUserData = () => ({
-  type: "CLEAR_FORM_DATA",
+export const deleteUserData = (index) => ({
+  type: DELETE_USER_DATA,
+  payload: index,
 });

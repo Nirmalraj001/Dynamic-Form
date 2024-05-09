@@ -1,34 +1,29 @@
+import { ADD_USER_DATA, DELETE_USER_DATA } from './actions';
+
 const initialState = {
-  userData: JSON.parse(localStorage.getItem("userData")) || [],
+  userData: JSON.parse(localStorage.getItem('userData')) || [],
 };
 
-const reducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action) => {
+  console.log(initialState,"initialState")
   switch (action.type) {
-    case "ADD_FORM_DATA":
-      const newUserData = [...state.userData, action.payload];
-      localStorage.setItem("userData", JSON.stringify(newUserData)); // Update localStorage
+    case ADD_USER_DATA:
+      const addedUserData = [...state.userData, ...action.payload];
+      localStorage.setItem('userData', JSON.stringify(addedUserData));
       return {
         ...state,
-        userData: newUserData,
+        userData: addedUserData,
       };
-    case "DELETE_FORM_DATA":
-      const updateUserData = state.userData.filter(
-        (data, index) => index !== action.payload
-      );
-      localStorage.setItem("userData", JSON.stringify(updateUserData)); // Delete localStorage
+    case DELETE_USER_DATA:
+      const updatedUserData = state.userData.filter((data, index) => index !== action.payload);
+      localStorage.setItem('userData', JSON.stringify(updatedUserData));
       return {
         ...state,
-        userData: updateUserData
-      };
-    case "CLEAR_FORM_DATA":
-      localStorage.removeItem("userData"); // Remove from localStorage
-      return {
-        ...state,
-        userData: [],
+        userData: updatedUserData,
       };
     default:
       return state;
   }
 };
 
-export default reducer;
+export default rootReducer;
